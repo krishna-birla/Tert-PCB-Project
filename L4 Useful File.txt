@@ -1,0 +1,180 @@
+/* Source: STM32L431xx Datasheet (DocID028800 Rev 2) Page 80-82 */
+
+AHB1
+{
+	FLASH;
+	RCC;
+}
+
+AHB2
+{
+	GPIOA;
+	GPIOB;
+	GPIOC;
+	GPIOD;
+	GPIOE;
+	GPIOH;
+	ADC;	
+}
+
+APB1 //PCLK1
+{
+	LPTIM1;
+	LPTIM2;
+	I2C1;
+	I2C2;
+	I2C3;
+	USART2;
+	USART3;
+	USART4;
+	SPI2;
+	SPI3;
+	RTC;
+	WWDG;
+	TIM2;
+	TIM3;
+	TIM6;
+	TIM7;
+}
+
+APB2 //PCLK2
+{
+	TIM1;
+	TIM15;
+	TIM16;
+	SPI1;
+	USART1;
+	EXTI;
+}
+
+/* Source: STM32L431xx Datasheet (DocID028800 Rev 2) Page 60-65,67,69-70 */
+/* Source: Tert PCB V2.0.pdf */
+
+//OCPCs
+OCPC
+{
+	ON1 = PA_11; //M1POW
+	ON2 = PB_5; //M2POW
+	ON3 = PB_7; //M3POW
+	ON4 = PB_15; //ADC_VCC
+	ON5 = PB_11; //PROX_PWR
+	ON6 = PC_13; //M123EN
+	ON7 = ; //MCU_VDD
+
+	FAULT1 = PA_12; //M1POW
+	FAULT2 = PB_6; //M2POW
+	FAULT3 = PB_8; //M3POW
+	FAULT4 = PA_0; //ADC_VCC
+	FAULT5 = PB_12; //PROX_PWR
+	FAULT6 = PB_9; //M123EN
+	FAULT7 = ; //MCU_VDD
+}
+
+//Motor Input
+CMTMOD
+{
+	M1 = PA_2; //I/O
+	M2 = PB_2; //I/O
+	M3 = PA_7; //I/O
+}
+
+//Motor Input
+BRKMOD
+{
+	M1 = PA_4; //I/O
+	M2 = PB_1; //I/O
+	M3 = PB_0; //I/O
+}
+
+//Motor Input
+FR
+{
+	M1 = PX_3; //I2C - I/O
+	M2 = PX_5; //I2C - I/O
+	M3 = PX_4; //I2C - I/O
+}
+
+//Motor Input
+PWM
+{
+	M1 = PA_1; //TIM2_CH2 //AF1 //PWM_2 //Pin A1
+	M2 = PB_10; //TIM2_CH3 //AF1 //PWM_2 //Not on NUCLEO-L432KC
+	M3 = PA_5; //TIM2_CH1 //AF1 //PWM_2 //Pin A4
+}
+
+//Motor Output
+FG
+{
+	M1 = PA_3; //TIM15_CH2 //AF14 //Pin A2
+	M2 = PA_8; //TIM1_CH1 //AF1 //Pin D9
+	M3 = PA_6; //TIM16_CH1 //AF14 //Pin A5
+}
+
+//Motor Output
+RD
+{
+	M1 = PX_0; //I2C - I/O
+	M2 = PX_1; //I2C - I/O
+	M3 = PX_2; //I2C - I/O
+}
+
+//I2C
+SDA
+{
+	MSP = PB_14; //I2C2 //AF4 //Pin not on NUCLEO-L432KC
+	ARM = PA_10; //I2C1 //AF4 //Pin D0
+	LTC = PA_10; //Addr0 = Addr1 = Addr2 = 0 //I2C1 //AF4 //Pin D1 (0x90 write addr)
+	LTC = PA_10; //Addr0 = Addr1 = 0 //Addr2 = 1 //I2C1 //AF4 //Pin D1 (0x98 write addr)
+	PCA = PA_10; //Addr0 = Addr2 = 0 //Addr1 = 1 //I2C1 //AF4 //Pin D0 (0x44 write addr)
+	USER = PB_4; //I2C3 //AF4 //Pin D12
+}
+
+//I2C
+SCL
+{
+	MSP = PB_13; //I2C2 //AF4 //Pin not on NUCLEO-L432KC
+	ARM = PA_9; //I2C1 //AF4 //Pin D1
+	LTC = PA_9; //Addr0 = Addr1 = Addr2 = 0 //I2C1 //AF4 //Pin D1 (0x90 write addr)
+	LTC = PA_9; //Addr0 = Addr1 = 0 //Addr2 = 1 //I2C1 //AF4 //Pin D1 (0x98 write addr)
+	PCA = PA_9; //Addr0 = Addr2 = 0 //Addr1 = 1 //I2C1 //AF4 //Pin D1 (0x44 write addr)
+	USER = PA_7; //I2C3 //AF4 //Pin A6
+}
+
+//Timer 1 Mappings
+TIM1
+{
+	CH_1 = PA_8;
+	CH_1N = PA_7, PB_13;
+	CH_2 = PA_9;
+	CH_2N = PB_0, PB_14;
+	CH_3 = PA_10;
+	CH_3N = PB_1, PB_15;
+	CH_4 = PA_11;
+	CH_4N;
+	CH_5;
+	CH_6;
+}
+
+//Timer 2 Mappings
+TIM2
+{
+	CH_1 = PA_0, PA_5, PA_15(JTDI);
+	CH_2 = PA_1, PB_3(JTDO-TRACE SWO);
+	CH_3 = PA_2, PB_10;
+	CH_4 = PA_3, PB_11;
+}
+
+//Timer 15 Mappings
+TIM15
+{
+	CH_1 = PA_2, PB_14;
+	CH_1N = PA_1, PB_13;
+	CH_2 = PA_3, PB_15;
+}
+
+//Timer 16 Mappings
+TIM16
+{
+	CH_1 = PA_6, PB_8;
+	CH_1N = PB_6;
+}

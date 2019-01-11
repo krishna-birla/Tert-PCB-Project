@@ -1,0 +1,26 @@
+/*
+ * PARIKSHIT STUDENT SATELLITE TEAM
+ * MANIPAL INSTITUTE OF TECHNOLOGY
+ * FILE: BSP_WWDG.c
+ * TYPE: BOARD SUPPORT PACKAGE (SOURCE)
+ * MCU: STM32L431CC
+ * DEVELOPING SUB-SYSTEM: ON-BOARD DATA HANDLING SUB-SYSTEM
+ * DEVELOPER: KRISHNA BIRLA
+ */
+
+#include "BSP_WWDG.h"
+
+void SystemReset()
+{
+	NVIC_SystemReset();
+}
+
+void CodeLifeEndDeinit()
+{
+	//
+}
+
+void TIM7_IRQHandler()
+{
+	//
+}
